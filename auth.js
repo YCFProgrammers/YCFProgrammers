@@ -2,7 +2,8 @@ function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     localStorage.setItem('userToken', googleUser.getAuthResponse().id_token);
     localStorage.setItem('username', profile.getName());
-    window.location.href = 'page.html';
+    console.log("Redirigiendo a page.html");
+    window.location.replace('page.html');
 }
 
 
