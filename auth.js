@@ -3,7 +3,7 @@ function onSignIn(googleUser) {
     localStorage.setItem('userToken', googleUser.getAuthResponse().id_token);
     localStorage.setItem('username', profile.getName());
     console.log("Redirigiendo a page.html");
-    window.location.replace('page.html');
+    window.location.replace('https://ycfprogrammers.vercel.app/page.html');
 }
 
 
