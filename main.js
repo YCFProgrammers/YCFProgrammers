@@ -150,6 +150,22 @@ const diccionario = {
         "honestidad": "Cualidad de ser honesto y decir la verdad.",
 };
 
+function buscarInformacionAdicional(mensaje) {
+    const palabra = mensaje.split(' ')[1];
+    if (diccionario[palabra]) {
+        return `La definición de ${palabra} es: ${diccionario[palabra]}`;
+    }
+    return null;
+}
+
+function buscarEnDiccionario(palabra) {
+    if (diccionario[palabra]) {
+        return `La definición de ${palabra} es: ${diccionario[palabra]}`;
+    }
+    return null;
+}
+
+
 function botResponse(message) {
     if (message.toLowerCase().startsWith('logica ')) {
         const comandoLogico = message.slice(7);
@@ -408,8 +424,6 @@ function buscarInformacionAdicional(tema) {
         "tecnología": "La tecnología se refiere a la aplicación práctica del conocimiento científico. Incluye herramientas, máquinas, técnicas y sistemas utilizados para resolver problemas o realizar tareas específicas.",
         // Agrega más temas según sea necesario
     };
-
-    var diccionario = Diccionario.getDiccionario();
 
 function procesarEntradaUsuario(entrada) {
     entrada = entrada.toLowerCase();
