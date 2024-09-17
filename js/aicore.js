@@ -1,4 +1,10 @@
-class AICore {
+import * as natural from 'natural';
+import * as use from '@tensorflow-models/universal-sentence-encoder';
+import * as tf from '@tensorflow/tfjs';
+import axios from 'axios';
+import * as cheerio from 'cheerio';
+
+export class AICore {
   constructor() {
     this.tokenizer = new natural.WordTokenizer();
     this.classifier = new natural.BayesClassifier();
@@ -8,10 +14,8 @@ class AICore {
   }
 
   async initializeAI() {
-    // Load pre-trained sentence encoder model
     this.sentenceEncoder = await use.load();
 
-    // Train the classifier with sample intents
     this.classifier.addDocument('What is the weather like?', 'weather');
     this.classifier.addDocument('Tell me about the stock market', 'finance');
     this.classifier.addDocument('Who won the last World Cup?', 'sports');
@@ -19,12 +23,10 @@ class AICore {
     this.classifier.addDocument('What are the symptoms of COVID-19?', 'health');
     this.classifier.train();
 
-    // Initialize knowledge base
     await this.updateKnowledgeBase();
   }
 
   async updateKnowledgeBase() {
-    // Simulating knowledge base update (in a real scenario, this would fetch from a database or API)
     this.knowledgeBase = {
       weather: "I can provide weather information for various locations. What city are you interested in?",
       finance: "I can discuss stock markets, cryptocurrencies, and economic trends. What specific financial topic would you like to know about?",
@@ -103,7 +105,6 @@ class AICore {
       return sentenceWithToken ? sentenceWithToken.trim() + '.' : '';
     }).join(' ');
 
-    // Incorporate knowledge base information
     if (this.knowledgeBase[intent]) {
       response += `\n\nAdditionally, ${this.knowledgeBase[intent]}`;
     }

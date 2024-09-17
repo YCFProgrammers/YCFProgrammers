@@ -1,4 +1,6 @@
-class Chatbot {
+import { AICore } from './aicore.js';
+
+export class Chatbot {
   constructor() {
     this.aiCore = new AICore();
     this.conversationHistory = [];

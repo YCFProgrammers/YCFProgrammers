@@ -14,7 +14,7 @@ app.use(express.static('./', {
 
 // Ruta para la página principal
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'chat.html'));
+  res.sendFile(path.join(__dirname, '../chat.html'));
 });
 
 // Iniciar el servidor
